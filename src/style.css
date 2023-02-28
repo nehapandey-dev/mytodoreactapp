@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("https://images.unsplash.com/photo-1493219686142-5a8641badc78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+    background-size: cover;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.conatiner {
+    margin-top: 200px;
+}
+
+.text-data {
+    height: 50px;
+    width: 320px;
+    border-style: none;
+    padding: 10px;
+    margin-top: 12px;
+}
+
+.Plus-btn {
+    position: relative;
+    right: 30px;
+    top: 6px;
+    font-size: 24px;
+
+}
+
+.Plus-btn:active {
+    transform: translateY(2px);
+}
+
+.todo-btn {
+    margin-top: 30px;
+    padding: 6px;
+    width: 180px;
+    background: rgb(234, 76, 76);
+    color: aliceblue;
+    border-style: none;
+}
+
+.todo-btn:active {
+    transform: translateY(2px);
+}
+
+.todo-btn:hover {
+    background: rgb(119, 112, 112);
+}
+
+.all-items {
+    height: 50px;
+    width: 310px;
+    padding: 13px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    position: relative;
+    left: 36%;
+    border: 1px solid rgb(132, 186, 15);
+}
+
+.all-items:hover {
+    background-color: rgb(221, 246, 166);
+    border: 1px solid rgb(164, 235, 12);
+}
+
+.edit {
+    color: rgb(79, 139, 0);
+    font-size: 20px;
+}
+
+.remove {
+    color: rgb(110, 44, 44);
+    font-size: 20px;
+}
+
+.output-text {
+    color: blue;
+}
