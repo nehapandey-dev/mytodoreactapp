@@ -1,17 +1,33 @@
 import React, { useState } from 'react'
 import { FcPlus } from "react-icons/fc";
 import { RiDeleteBin4Fill } from "react-icons/ri";
-import { FcOk } from "react-icons/fc";
-
+import { FaEdit } from "react-icons/fa";
 
 function Mylist() {
-    const [getdata, setData] = useState()
+    const [getdata, setData] = useState('')
     const [newdata, setNewdData] = useState([])
+    const [editSubmit, setEditSubmit] = useState(true)
+    const [isEditSubmit, setIsEditSubmit] = useState()
+
     //ADD THE INPUT DATA FUNTION
+
     const addInputData = () => {
         if (!getdata) {
             alert("Please enter some text")
-        } else {
+        } else if (getdata && !editSubmit) {
+            setNewdData(
+                newdata.map((element) => {
+                    if (element.id === isEditSubmit) {
+                        return { ...element, name: getdata }
+                    }
+                    return element;
+                })
+            )
+            setEditSubmit(true)
+            setData('')
+            setIsEditSubmit(null)
+        }
+        else {
             const newInputData = {
                 id: new Date().getTime().toString(),
                 name: getdata,
@@ -19,7 +35,16 @@ function Mylist() {
             setNewdData([...newdata, newInputData]);
             setData("");
         }
-        alert("your task submitted")
+
+    }
+    //edit tododata
+    const editItem = (id) => {
+        let upadatedEditItem = newdata.find((element) => {
+            return element.id === id
+        })
+        setEditSubmit(false);
+        setData(upadatedEditItem.name);
+        setIsEditSubmit(id);
     }
     //remove addData
     const removeData = (index) => {
@@ -32,6 +57,7 @@ function Mylist() {
     const removeAllData = () => {
         setNewdData([])
     }
+
     return (
         <div className="conatiner">
             <div className="body">
@@ -46,16 +72,20 @@ function Mylist() {
                         value={getdata}
                         onChange={(e) => setData(e.target.value)}
                         className='text-data'
-                    /><FcPlus className='Plus-btn' onClick={addInputData} />
+                    />
+                    {
+                        editSubmit ? <FcPlus className='Plus-btn' onClick={addInputData} /> :
+                            <FcPlus className='Plus-btn' onClick={addInputData} />
+                    }
                 </div>
             </div>
             <div className="input-items" >
                 {newdata.map((element) => {
                     return (
                         <div className='all-items' key={element.id}>
-                            <span><FcOk /></span>
-                            <p className='output-text'>{element.name}</p>
 
+                            <p className='output-text'>{element.name}</p>
+                            <span className='edit'><FaEdit onClick={() => editItem(element.id)} /></span>
                             <span className='remove'><RiDeleteBin4Fill onClick={() => removeData(element.id)} /></span>
                         </div>
                     )

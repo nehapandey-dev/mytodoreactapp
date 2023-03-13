@@ -11,7 +11,7 @@ body {
 }
 
 .conatiner {
-    margin-top: 200px;
+    margin-top: 180px;
 }
 
 .text-data {
@@ -20,6 +20,7 @@ body {
     border-style: none;
     padding: 10px;
     margin-top: 12px;
+    background-color: rgb(212, 244, 141);
 }
 
 .Plus-btn {
@@ -52,6 +53,7 @@ body {
 }
 
 .all-items {
+    margin-top: 16px;
     height: 50px;
     width: 310px;
     padding: 13px;
@@ -64,13 +66,18 @@ body {
 }
 
 .all-items:hover {
-    background-color: rgb(221, 246, 166);
+
     border: 1px solid rgb(164, 235, 12);
 }
 
 .edit {
     color: rgb(79, 139, 0);
     font-size: 20px;
+}
+
+.edit {
+    position: relative;
+    left: 20%;
 }
 
 .remove {
