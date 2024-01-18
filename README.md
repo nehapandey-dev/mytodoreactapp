@@ -1,3 +1,3 @@
 `My Todo App`
 
-![myproject link](/public/images/Todo-list.png)
+![myproject link](/todo%20screen.png)
