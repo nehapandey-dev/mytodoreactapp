@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 
 function Mylist() {
     const [getdata, setData] = useState('')
-    const [newdata, setNewdData] = useState([])
+    const [newdata, setNewdData] = useState(JSON.parse(localStorage.getItem("newdata")) || [])
     const [editSubmit, setEditSubmit] = useState(true)
     const [isEditSubmit, setIsEditSubmit] = useState()
     const [count, setCount] = useState(0)
@@ -56,7 +56,7 @@ function Mylist() {
             return element.id !== index;
         })
         setNewdData(updatedData)
-setCount(count-1)
+        setCount(count - 1)
     }
     const removeAllData = () => {
         setNewdData([])
@@ -64,21 +64,21 @@ setCount(count-1)
     }
 
     return (
-        <div className='flex justify-center items-end text-center w-full my-20'>
+        <div className='flex justify-center items-center text-center w-full my-20 sm:my-30 '>
             <div className=" ">
                 <figure >
                     <figcaption>
                         <h3 className='text-2xl'>Add some task here ✍🏻</h3>
                     </figcaption>
                 </figure>
-                <div className="body  py-10 w-full">
+                <div className="body  py-10">
 
-                    <div className="text-box flex gap-2 justify-center items-center w-96 border-2 border-blue-700 rounded-md">
-                        <textarea type={'text'}
+                    <div className="text-box flex gap-1 justify-center items-center">
+                        <input type={'text'}
                             placeholder='Enter your text here..'
                             value={getdata}
                             onChange={(e) => setData(e.target.value)}
-                            className='text-data p-4 pr-10 h-20 w-96 '
+                            className='text-data p-4 h-20 sm:h-14 sm:w-52 border-2 border-blue-700 rounded-md  w-screen'
                         />
 
                         {
@@ -88,13 +88,13 @@ setCount(count-1)
                     </div>
                 </div>
                 <div className="input-items  " >
-                    <h1 className='my-4 w-96 border bg-slate-100 p-1'>My Lists {count}</h1>
+                    <h1 className='md:my-4 sm:my-2 md:w-96 sm:w-80 border bg-slate-100  p-1'>My Lists {count}</h1>
                     {newdata.map((element, index) => {
                         return (
-                            <div className='flex justify-between hover:shadow-md p-3 w-96 rounded-md mt-2'>
-                                 <p>{index+1}.</p>
+                            <div className='flex justify-between hover:shadow-md p-3 md:w-96 sm:w-80 rounded-md mt-2'>
+                                <p>{index + 1}.</p>
                                 <div className='all-items ' key={element.id}>
-                                   
+
                                     <p className=''>{element.name}</p>
                                 </div>
                                 <div className='flex gap-4'>
@@ -106,8 +106,8 @@ setCount(count-1)
                     })}
 
                 </div>
-                <div className='w-96'>
-                    <button className='todo-btn p-2 bg-green-600 hover:bg-orange-600 rounded-md text-white w-full border mt-10' onClick={removeAllData}>Clear List's 📆</button>
+                <div className='md:w-96 sm:w-80'>
+                    <button className='todo-btn p-2 bg-green-600 hover:bg-orange-600 rounded-md text-white md:w-full sm:w-80 border mt-10' onClick={removeAllData}>Clear List's 📆</button>
                 </div>
             </div>
 
